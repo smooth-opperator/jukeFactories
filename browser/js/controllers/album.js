@@ -28,6 +28,10 @@ app.controller('AlbumCtrl', function($scope, $http, $rootScope, StatsFactory, Pl
   $scope.$on('next', next);
   $scope.$on('prev', prev);
 
+  $scope.start = PlayerFactory.start;
+  $scope.currentSong = PlayerFactory.getCurrentSong;
+  $scope.playing = PlayerFactory.isPlaying;
+
   // functionality
   function pause () {
     $scope.playing = false;
@@ -49,5 +53,4 @@ app.controller('AlbumCtrl', function($scope, $http, $rootScope, StatsFactory, Pl
   };
   function next () { skip(1); };
   function prev () { skip(-1); };
-
 });

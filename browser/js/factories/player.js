@@ -38,8 +38,6 @@ app.factory('PlayerFactory', function ($q, $rootScope){
 	    audio.load();
 	    audio.play();
 	    PlayerFactory.songPlaying = true;
-	    
-
 	}
 
 	PlayerFactory.pause = function(){
@@ -59,7 +57,6 @@ app.factory('PlayerFactory', function ($q, $rootScope){
 
 	PlayerFactory.getCurrentSong = function(){
 		return currentSong;
-
 	}
 
 	PlayerFactory.next = function(){
@@ -68,7 +65,6 @@ app.factory('PlayerFactory', function ($q, $rootScope){
 		
 		currentSong = ourSongList[currentSongIndex];
 		PlayerFactory.start(currentSong);
-
 	}
 
 	PlayerFactory.previous = function(){
@@ -82,12 +78,17 @@ app.factory('PlayerFactory', function ($q, $rootScope){
 	PlayerFactory.getProgress = function(){
 		if (!PlayerFactory.isPlaying() ) return 0;
 		progress =  audio.currentTime / audio.duration;
+		console.log(progress);
 		return progress;	
 	}
 
-	PlayerFactory.toggle = function(){
-		if (PlayerFactory.isPlaying() ) PlayerFactory.pause();
-    	else PlayerFactory.resume();
+	PlayerFactory.toggle = function(song){
+		if (PlayerFactory.isPlaying() && song === currentSong) PlayerFactory.pause();
+    	else if (song === currentSong) PlayerFactory.resume();
+    	else {
+    		PlayerFactory.start(song);
+    	}
+
 	}
 	return PlayerFactory;
 });

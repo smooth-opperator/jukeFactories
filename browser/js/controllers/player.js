@@ -11,7 +11,7 @@ app.controller('PlayerCtrl', function($scope, $rootScope, PlayerFactory){
 //   // });
 
 //   // state variables
-  $scope.getCurrentSong = PlayerFactory.getCurrentSong;
+$scope.getCurrentSong = PlayerFactory.getCurrentSong;
   // console.log($scope.currentSong);
 //   // $scope.playing = false;
 
@@ -22,13 +22,16 @@ app.controller('PlayerCtrl', function($scope, $rootScope, PlayerFactory){
 //   }
 
   // incoming events (from Album or toggle) **
-    // $scope.$on('pause', PlayerFactory.pause() );
-    // $scope.$on('play', PlayerFactory.start() );
- $scope.next = PlayerFactory.next;
+// $scope.$on('pause', PlayerFactory.pause() );
+// $scope.$on('play', PlayerFactory.start() );
+$scope.start = PlayerFactory.start;
+$scope.pause = PlayerFactory.pause;
+$scope.next = PlayerFactory.next;
 $scope.prev = PlayerFactory.previous;
 $scope.toggle = PlayerFactory.toggle;
 $scope.playing = PlayerFactory.isPlaying;
-
+$scope.progress = PlayerFactory.getProgress;
+$scope.currentSong = PlayerFactory.getCurrentSong;
 
 //   // functionality
 
@@ -42,7 +45,7 @@ $scope.playing = PlayerFactory.isPlaying;
     
 //   //   $scope.playing = true;
 //   //   // resume current song
-//   //   $scope.currentSong = song;
+
 
 //   //   if (song === $scope.currentSong) return PlayerFactory.start(song);
    
